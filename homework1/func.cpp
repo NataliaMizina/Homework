@@ -1,9 +1,6 @@
 #include "func.h"
 ans solution(dot* input, int n)
 {
-    /* расстояние d = x*cos(a) + b*sin(a) ; x,y - точка, cos(a), sin(a) - компоненты нормали
-    к направляющему вектору прямой разделяющей плооскость
-    d > 0 - точка справа от прямой, d < 0 - точка слева*/
     double sin = input[0].y/sqrt(input[0].x*input[0].x + input[0].y*input[0].y);
     double cos = input[0].x/sqrt(input[0].x*input[0].x + input[0].y*input[0].y);
 
