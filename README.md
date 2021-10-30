@@ -1,2 +1,2 @@
 # Homework
-1 variant
+variant #1
