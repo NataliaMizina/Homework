@@ -6,7 +6,7 @@
 int MoveForward(double h, Speed &speed, const Partition *partitions, int currentDotX, int numberOfPartitions,
                 int startingPartition) {
     double DotXatFreeFall = GetXofFreeFall(h, speed, currentDotX, true);
-    std::cout << "DotXatFreeFall: " << DotXatFreeFall << std::endl;
+   
 
     if (DotXatFreeFall <= partitions[0].x)
     {
@@ -18,9 +18,9 @@ int MoveForward(double h, Speed &speed, const Partition *partitions, int current
         while (i<numberOfPartitions && DotXatFreeFall >= partitions[i].x)
         {
             double DotYatPartition = getDotYatPartition(partitions[i].x, h, speed, currentDotX);
-            std::cout << "dot Y at partition[" << i + 1 << "]: " << DotYatPartition << std::endl;
+          
             if (partitions[i].h>=DotYatPartition) {
-                std::cout << "partition [" << i + 1 << "].h = " << partitions[i].h << ": HIT" << std::endl;
+             
 
                 if (startingPartition==i)  // если startingPartition не 0, значит точка летит вперёд
                       return startingPartition;                      //  после отскока назад, и если при этом она ударилась
@@ -37,7 +37,7 @@ int MoveForward(double h, Speed &speed, const Partition *partitions, int current
                 //----------------------------------------------------------
             }
             else
-                std::cout << "partition [" << i + 1 << "].h = " << partitions[i].h << ": jumped over" << std::endl;
+               
             i++;
         }
         return i;
@@ -49,7 +49,7 @@ int MoveForward(double h, Speed &speed, const Partition *partitions, int current
 int MoveBack(const Partition *partitions, int i, double XofHitPartition, double DotYatPartition, Speed &speed,
              int numberOfPartitions) {
     double DotXatFreeFallBack = GetXofFreeFall(DotYatPartition, speed, XofHitPartition, false);
-    std::cout << "DotXatFreeFallBack: " << DotXatFreeFallBack << std::endl;
+  
 
     if (DotXatFreeFallBack > partitions[i-1].x) {
         return i;
@@ -59,10 +59,9 @@ int MoveBack(const Partition *partitions, int i, double XofHitPartition, double 
         while (j>=0 && DotXatFreeFallBack <= partitions[j].x) {
             double DotYatPartitionBack = getDotYatPartition(partitions[j].x, DotYatPartition, speed,
                                                             XofHitPartition);
-            std::cout << "dot Y at partition[" << j + 1 << "] back: " << DotYatPartitionBack
-                      << std::endl;
+          
             if (partitions[j].h >= DotYatPartitionBack) {
-                std::cout << "partition [" << j + 1 << "].h = " << partitions[j].h << ": HIT" << std::endl;
+               
                 if (j==i-1) return j+1; // если точка на пути назад ударилась об предыдущую перегородку, она уже никуда не вылетит
                 //----------------------------------------------------------
                 Speed speedNew;
@@ -73,7 +72,7 @@ int MoveBack(const Partition *partitions, int i, double XofHitPartition, double 
                 return answer;
                 //----------------------------------------------------------
             } else
-                std::cout << "partition [" << j + 1 << "].h = " << partitions[j].h << ": jumped over" << std::endl;
+               
             j--;
         }
         return j+1;
@@ -119,14 +118,14 @@ double GetXofFreeFall(double h, Speed speed, double currentDotX, bool right) {
 double calculateC(double h) {
     double c;
     c = h;
-    std::cout << "   C: " << c << std::endl;
+   
     return c;
 }
 
 double calculateB(const Speed &speed) {
     double b;
     b= speed.vy / speed.vx;
-    std::cout << "   B: " << b << std::endl;
+    
     return b;
 }
 
@@ -135,7 +134,7 @@ double calculateA(const Speed &speed) {
     double a_znamenatel = 2 * (pow(speed.vx, 2) + pow(speed.vy, 2));
     double a_chislitel =  g*(1+(pow(speed.vy,2)/pow(speed.vx,2)));
     a=   -1 * a_chislitel / a_znamenatel;
-    std::cout << "   A: " << a << std::endl;
+    
     return a;
 }
 
