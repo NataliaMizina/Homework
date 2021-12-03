@@ -33,7 +33,7 @@ ans solution(dot* input, int n)
 }
 dot* readFile(const char* path, int& n)
 {
-    const int MAX = 10000000;
+    const int MAX = 10;
     char buffer[MAX];
     std::ifstream in(path);
     if(in.is_open())
