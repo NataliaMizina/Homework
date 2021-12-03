@@ -3,6 +3,7 @@
 #include <fstream>
 #include <cmath>
 #include <exception>
+#include <climits>
 
 struct dot{
     double x;
