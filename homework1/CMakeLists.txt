@@ -1,1 +1,1 @@
-add_executable(homework1 main1.cpp)
+add_executable(homework1 main.cpp func.cpp)
