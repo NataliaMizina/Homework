@@ -3,19 +3,20 @@
 #include <fstream>
 #include <cmath>
 #include <exception>
-#include <climits>
 
-struct dot{
-    double x;
-    double y;
+struct Point{
+    int x;
+    int y;
 };
 
-struct ans
+struct Answer
 {
-    dot left;
-    dot right;
+    Point left;
+    Point right;
 };
 
-ans solution(dot* input, int n);
-dot* readFile(const char* path, int& n);
+Answer firstVar(Point* input, int n);
+Point* readFile(const char* path, int& n);
+
+
 
