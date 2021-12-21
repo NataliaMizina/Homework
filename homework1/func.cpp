@@ -1,67 +1,66 @@
 #include "func.h"
-Answer firstVar(Point* input, int n)
+ans solution(dot* input, int n)
 {
     /* расстояние d = x*cos(a) + b*sin(a) ; x,y - точка, cos(a), sin(a) - компоненты нормали
     к направляющему вектору прямой разделяющей плооскость
     d > 0 - точка справа от прямой, d < 0 - точка слева*/
-    double sin = -input[0].x/sqrt(input[0].x*input[0].x + input[0].y*input[0].y);
-    double cos = input[0].y/sqrt(input[0].x*input[0].x + input[0].y*input[0].y);
+    double sin = input[0].y/sqrt(input[0].x*input[0].x + input[0].y*input[0].y);
+    double cos = input[0].x/sqrt(input[0].x*input[0].x + input[0].y*input[0].y);
 
 
-    double maxRight = 0;
-    Point maxRightPoint{0,0};
+    double Rightmost = 1;
+    dot Rightmostdot{0,0};
 
-    double maxLeft = 0;
-    Point maxLeftPoint{0,0};
+    double Leftmost = 1;
+    dot Leftmostdot{0,0};
 
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
-        double dist = input[i].x*cos + input[i].y*sin;
+        double temp = input[i].x*sin + input[i].y*(-cos);
+        double cs = (input[i].x*cos+input[i].y*sin)/sqrt(input[i].x*input[i].x+input[i].y*input[i].y);
 
-        if (dist >= maxRight)
+
+        if (cs <= Rightmost && temp >= 0)
         {
-            maxRight = dist;
-            maxRightPoint = input[i];
+            Rightmost = cs;
+            Rightmostdot = input[i];
         }
-        else if (dist <= maxLeft)
+        else if (cs <= Leftmost && temp < 0)
         {
-            maxLeft = dist;
-            maxLeftPoint = input[i];
+            Leftmost = cs;
+            Leftmostdot = input[i];
         }
     }
 
-    return Answer {maxLeftPoint, maxRightPoint};
+    return ans {Leftmostdot, Rightmostdot};
 }
-Point* readFile(const char* path, int& n)
+dot* readFile(const char* path, int& n)
 {
-
+    const int MAX = 10;
+    char buffer[MAX];
     std::ifstream in(path);
     if(in.is_open())
     {
         while(!in.eof())
         {
-            int x = INT_MAX;  int y = INT_MAX;
-            in >> x >> y;
-            if (x!=INT_MAX && y!= INT_MAX) n++;
+            in.getline(buffer, MAX);
+            n++;
         }
 
-        in.close();
 
-        if (n<2) return nullptr;
 
-        Point* points = new Point[n];
-        int i = 0;
-        in.open(path);
-        while(!in.eof() && i<n)
+        dot* dots = new dot[n];
+        n = 0;
+        in.seekg(0);
+        while(!in.eof())
         {
-            Point inPoint;
-            in >> inPoint.x >> inPoint.y;
-            points[i] = inPoint;
-            i++;
+            dot indot;
+            in >> indot.x >> indot.y;
+            dots[n] = indot;
+            n++;
         }
 
-        in.close();
-        return points;
+        return dots;
     }
     else {
         throw std::runtime_error("No file!");
