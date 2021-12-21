@@ -1,4 +1,5 @@
 #include "func.h"
+#include <climits>
 
 using namespace std;
 
