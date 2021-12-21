@@ -4,19 +4,17 @@
 #include <cmath>
 #include <exception>
 
-struct Point{
-    int x;
-    int y;
+struct dot{
+    double x;
+    double y;
 };
 
-struct Answer
+struct ans
 {
-    Point left;
-    Point right;
+    dot left;
+    dot right;
 };
 
-Answer firstVar(Point* input, int n);
-Point* readFile(const char* path, int& n);
-
-
+ans solution(dot* input, int n);
+dot* readFile(const char* path, int& n);
 
