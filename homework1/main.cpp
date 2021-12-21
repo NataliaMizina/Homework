@@ -9,26 +9,13 @@ int main()
     int n = 0;
     try
     {
-        Point* points = readFile("in.txt", n);
+        dot* dots = readFile("in.txt", n);
+        ans result = solution(dots, n);
 
-        int maxLeftX=0;
-        int maxLeftY=0;
-        int maxRightX=0;
-        int maxRightY=0;
+        cout << "Leftmost: " << result.left.x << ' ' << result.left.y << '\n' <<
+             "Rightmost: " << result.right.x << ' ' << result.right.y << endl;
 
-        if (n>1)
-        {
-            Answer res = firstVar(points, n);
-            maxLeftX =res.left.x;
-            maxLeftY =res.left.y;
-            maxRightX =res.right.x;
-            maxRightY =res.right.y;
-        }
-
-        cout << "max left: " << maxLeftX<< ' ' << maxLeftY << '\n' <<
-             "max right: " << maxRightX << ' ' << maxRightY << endl;
-
-        delete points;
+        delete dots;
     }
     catch(std::runtime_error err)
     {
