@@ -5,29 +5,32 @@ Answer firstVar(Point* input, int n)
     /* расстояние d = x*cos(a) + b*sin(a) ; x,y - точка, cos(a), sin(a) - компоненты нормали
     к направляющему вектору прямой разделяющей плоскость
     d > 0 - точка справа от прямой, d < 0 - точка слева*/
-    double sin = -input[0].x;
+    double sin = input[0].x;
     double cos = input[0].y;
 
 
-    double maxRight = 1;
+    double maxRight = 0;
     Point maxRightPoint{0,0};
 
-    double maxLeft = 1;
+    double maxLeft = 0;
     Point maxLeftPoint{0,0};
 
     for (int i = 0; i < n; i++)
     {
         int temp = input[i].y*sin+input[i].x*(-cos);
         double dist = (input[i].y*cos+input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
+        float ang = acos(dist)*180.0/3.1415926;
 
-        if (dist >= maxRight && temp >=0)
+        if (temp <= 0) ang = -ang;
+
+        if ( (maxRight-ang)>=0.0)
         {
-            maxRight = dist;
+            maxRight = ang;
             maxRightPoint = input[i];
         }
-        else if (dist <= maxLeft && temp<0)
+        else if ((maxLeft-ang)<0)
         {
-            maxLeft = dist;
+            maxLeft = ang;
             maxLeftPoint = input[i];
         }
     }
