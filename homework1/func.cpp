@@ -1,5 +1,5 @@
 #include "func.h"
-#include <climits>
+
 ans solution(dot* input, int n)
 {
     /* расстояние d = x*cos(a) + b*sin(a) ; x,y - точка, cos(a), sin(a) - компоненты нормали
