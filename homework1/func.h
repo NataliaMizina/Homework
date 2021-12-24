@@ -17,4 +17,3 @@ struct Answer
 
 Answer firstVar(Point* input, int n);
 Point* readFile(const char* path, int& n);
-
