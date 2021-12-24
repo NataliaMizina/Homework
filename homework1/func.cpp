@@ -3,28 +3,29 @@
 Answer firstVar(Point* input, int n)
 {
     /* расстояние d = x*cos(a) + b*sin(a) ; x,y - точка, cos(a), sin(a) - компоненты нормали
-    к направляющему вектору прямой разделяющей плооскость
+    к направляющему вектору прямой разделяющей плоскость
     d > 0 - точка справа от прямой, d < 0 - точка слева*/
-    double sin = -input[0].x/sqrt(input[0].x*input[0].x + input[0].y*input[0].y);
-    double cos = input[0].y/sqrt(input[0].x*input[0].x + input[0].y*input[0].y);
+    double sin = -input[0].x;
+    double cos = input[0].y;
 
 
-    double maxRight = 0;
+    double maxRight = 1;
     Point maxRightPoint{0,0};
 
-    double maxLeft = 0;
+    double maxLeft = 1;
     Point maxLeftPoint{0,0};
 
     for (int i = 0; i < n; i++)
     {
-        double dist = input[i].x*cos + input[i].y*sin;
+        int temp = input[i].y*sin+input[i].x*(-cos);
+        double dist = (input[i].y*cos+input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
 
-        if (dist >= maxRight)
+        if (dist >= maxRight && temp >=0)
         {
             maxRight = dist;
             maxRightPoint = input[i];
         }
-        else if (dist <= maxLeft)
+        else if (dist <= maxLeft && temp<0)
         {
             maxLeft = dist;
             maxLeftPoint = input[i];
@@ -68,4 +69,3 @@ Point* readFile(const char* path, int& n)
         throw std::runtime_error("No file!");
     }
 }
-
