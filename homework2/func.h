@@ -23,4 +23,3 @@ double getDotYatPartition(double partitionX, double h, Speed speed, double previ
 double GetXofFreeFall(double h, Speed speed, double currentDotX, bool right);
 int readNumberOfPartitions(char *string);
 Partition* readFile(char *path, double &h0, Speed &speed, int partitionsNumber);
-
