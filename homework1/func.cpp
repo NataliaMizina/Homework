@@ -5,7 +5,7 @@ Answer firstVar(Point* input, int n)
     /* расстояние d = x*cos(a) + b*sin(a) ; x,y - точка, cos(a), sin(a) - компоненты нормали
     к направляющему вектору прямой разделяющей плоскость
     d > 0 - точка справа от прямой, d < 0 - точка слева*/
-    double PI = atan(1)*4;
+    
     double sin = -input[0].x;
     double cos = input[0].y;
 
@@ -20,7 +20,7 @@ Answer firstVar(Point* input, int n)
     {
         int temp = input[i].y*sin+input[i].x*(-cos);
         double dist = (input[i].y*cos+input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
-        float ang = acos(dist)*180.0/PI;
+        float ang = acos(dist)*180.0/3.14;
 
         if (temp <= 0) ang = -ang;
 
