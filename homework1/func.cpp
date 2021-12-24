@@ -6,7 +6,7 @@ Answer firstVar(Point* input, int n)
     к направляющему вектору прямой разделяющей плоскость
     d > 0 - точка справа от прямой, d < 0 - точка слева*/
     double PI = atan(1)*4;
-    double sin = input[0].x;
+    double sin = -input[0].x;
     double cos = input[0].y;
 
 
