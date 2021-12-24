@@ -19,7 +19,7 @@ Answer firstVar(Point* input, int n)
     for (int i = 0; i < n; i++)
     {
         int temp = input[i].y*sin+input[i].x*(-cos);
-        double dist = (input[i].y*cos+input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
+        double dist = (input[i].y*cos-input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
         float ang = acos(dist)*180.0/3.14;
 
         if (temp <= 0) ang = -ang;
