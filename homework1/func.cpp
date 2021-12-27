@@ -7,10 +7,10 @@ Answer firstVar(Point* input, int n)
     double cos = input[0].y;
 
 
-    double maxRight = 0;
+    double maxRight = 1;
     Point maxRightPoint{0,0};
 
-    double maxLeft = 0;
+    double maxLeft = 1;
     Point maxLeftPoint{0,0};
 
     for (int i = 0; i < n; i++)
