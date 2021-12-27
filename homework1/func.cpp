@@ -1,13 +1,13 @@
 #include "func.h"
 #include <climits>
+
 Answer firstVar(Point* input, int n)
 {
     /* расстояние d = x*cos(a) + b*sin(a) ; x,y - точка, cos(a), sin(a) - компоненты нормали
-    к направляющему вектору прямой разделяющей плоскость
+    к направляющему вектору прямой разделяющей плооскость
     d > 0 - точка справа от прямой, d < 0 - точка слева*/
-    
-    double sin = -input[0].x;
-    double cos = input[0].y;
+    double sin = -input[0].x/sqrt(input[0].x*input[0].x + input[0].y*input[0].y);
+    double cos = input[0].y/sqrt(input[0].x*input[0].x + input[0].y*input[0].y);
 
 
     double maxRight = 0;
@@ -18,20 +18,16 @@ Answer firstVar(Point* input, int n)
 
     for (int i = 0; i < n; i++)
     {
-        int temp = input[i].y*sin+input[i].x*(-cos);
-        double dist = (input[i].y*cos-input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
-        float ang = acos(dist)*180.0/3.14;
+        double dist = input[i].x*cos + input[i].y*sin;
 
-        if (temp <= 0) ang = -ang;
-
-        if ( (maxRight-ang)>=0.0)
+        if (dist >= maxRight)
         {
-            maxRight = ang;
+            maxRight = dist;
             maxRightPoint = input[i];
         }
-        else if ((maxLeft-ang)<0)
+        else if (dist <= maxLeft)
         {
-            maxLeft = ang;
+            maxLeft = dist;
             maxLeftPoint = input[i];
         }
     }
@@ -73,3 +69,5 @@ Point* readFile(const char* path, int& n)
         throw std::runtime_error("No file!");
     }
 }
+
+
