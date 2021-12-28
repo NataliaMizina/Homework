@@ -3,8 +3,8 @@
 Answer firstVar(Point* input, int n)
 {
 
-    double sin = -input[0].x;
-    double cos = input[0].y;
+    double x0 = -input[0].x;
+    double y0 = input[0].y;
 
 
     double maxRight = 0.7;
@@ -15,15 +15,15 @@ Answer firstVar(Point* input, int n)
 
     for (int i = 0; i < n; i++)
     {
-        
-        double cos = (input[i].y*cos-input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
+        double delta = -x0*input[i].x+y0*input[i].y;
+        double cos = (input[i].y*y0-input[i].x*x0)/(sqrt(x0*x0+y0*y0)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
 
-        if (cos <= maxRight )
+        if (cos >= maxRight && delta >=0 )
         {
             maxRight = cos;
             maxRightPoint = input[i];
         }
-        else if (cos >= maxLeft )
+        else if (cos <= maxLeft && delta <0)
         {
             maxLeft = cos;
             maxLeftPoint = input[i];
