@@ -15,17 +15,17 @@ Answer firstVar(Point* input, int n)
 
     for (int i = 0; i < n; i++)
     {
-        int delta = -input[i].y*sin-input[i].x*(-cos);
-        double dist = (input[i].y*cos-input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
+        
+        double cos = (input[i].y*cos-input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
 
-        if (dist <= maxRight && delta <=0)
+        if (cos <= maxRight )
         {
-            maxRight = dist;
+            maxRight = cos;
             maxRightPoint = input[i];
         }
-        else if (dist >= maxLeft && delta>0)
+        else if (cos >= maxLeft )
         {
-            maxLeft = dist;
+            maxLeft = cos;
             maxLeftPoint = input[i];
         }
     }
