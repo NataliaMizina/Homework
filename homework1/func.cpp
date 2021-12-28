@@ -8,27 +8,24 @@ Answer firstVar(Point* input, int n)
 
 
     double maxRight = 1;
-    Point maxRightPoint{0,0};
+    Point maxRightPoint{1,1};
 
     double maxLeft = 1;
-    Point maxLeftPoint{0,0};
+    Point maxLeftPoint{1,1};
 
     for (int i = 0; i < n; i++)
     {
-        int temp = input[i].y*sin+input[i].x*(-cos);
-        double dist = (input[i].y*cos+input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
-        float ang = acos(dist)*180.0/3.1415926;
+        int delta = input[i].y*sin+input[i].x*(-cos);
+        double dist = (input[i].y*cos-input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
 
-        if (temp <= 0) ang = -ang;
-
-        if ( (maxRight-ang)>=0.0)
+        if (dist >= maxRight && delta >=0)
         {
-            maxRight = ang;
+            maxRight = dist;
             maxRightPoint = input[i];
         }
-        else if ((maxLeft-ang)<0)
+        else if (dist <= maxLeft && delta<0)
         {
-            maxLeft = ang;
+            maxLeft = dist;
             maxLeftPoint = input[i];
         }
     }
