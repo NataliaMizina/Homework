@@ -15,8 +15,8 @@ Answer firstVar(Point* input, int n)
 
     for (int i = 0; i < n; i++)
     {
-        int delta = input[i].y*sin+input[i].x*(cos);
-        double dist = (input[i].y*cos+input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
+        int delta = -input[i].y*sin-input[i].x*(-cos);
+        double dist = (input[i].y*cos-input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
 
         if (dist <= maxRight && delta <=0)
         {
