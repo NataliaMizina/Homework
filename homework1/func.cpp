@@ -7,23 +7,23 @@ Answer firstVar(Point* input, int n)
     double cos = input[0].y;
 
 
-    double maxRight = 1;
-    Point maxRightPoint{1,1};
+    double maxRight = 0.7;
+    Point maxRightPoint{0,0};
 
-    double maxLeft = 1;
-    Point maxLeftPoint{1,1};
+    double maxLeft = 0.7;
+    Point maxLeftPoint{0,0};
 
     for (int i = 0; i < n; i++)
     {
-        int delta = input[i].y*sin+input[i].x*(-cos);
-        double dist = (input[i].y*cos-input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
+        int delta = input[i].y*sin+input[i].x*(cos);
+        double dist = (input[i].y*cos+input[i].x*sin)/(sqrt(sin*sin+cos*cos)*sqrt(input[i].y*input[i].y+input[i].x*input[i].x));
 
-        if (dist >= maxRight && delta >=0)
+        if (dist <= maxRight && delta <=0)
         {
             maxRight = dist;
             maxRightPoint = input[i];
         }
-        else if (dist <= maxLeft && delta<0)
+        else if (dist >= maxLeft && delta>0)
         {
             maxLeft = dist;
             maxLeftPoint = input[i];
