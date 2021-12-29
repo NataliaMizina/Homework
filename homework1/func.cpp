@@ -1,4 +1,5 @@
 #include "func.h"
+#include <climits>
 Answer firstVar(Point* input, int n)
 {
 
