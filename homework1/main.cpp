@@ -24,8 +24,8 @@ int main()
             maxRightY =res.right.y;
         }
 
-        cout << "max left: " << maxLeftX<< ' ' << maxLeftY << '\n' <<
-             "max right: " << maxRightX << ' ' << maxRightY << endl;
+        cout << "Leftmost: " << maxLeftX<< ' ' << maxLeftY << '\n' <<
+             "Rightmost: " << maxRightX << ' ' << maxRightY << endl;
 
         delete points;
     }
